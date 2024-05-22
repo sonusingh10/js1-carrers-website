@@ -7,7 +7,7 @@
 #hmtldog.com , if you want to lean hlm
 #excalidraw.com
 
-from flask import Flask, render_template
+from flask import Flask, render_template,jsonify
 
 app = Flask(__name__)
 
@@ -41,8 +41,12 @@ JOBS = [
 
 @app.route("/")
 def hello_world():
-  #return "Hello Juhi Singh , how you are doing Good morning :) This message from Sonu Singh"
   return render_template('home.html', jobs=JOBS)
+  #return "Hello Juhi Singh , how you are doing Good morning :) This message from Sonu Singh"
+
+@app.route("/api/jobs")
+def list_jobs():
+  return jsonify(JOBS)
 
 
 if __name__ == "__main__":
